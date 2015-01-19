@@ -1,0 +1,201 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\f0\fs22\lang1033\par
+Version Control - any system that allows systematic versioning of content. That is a system that allows to create, edit and store different versions of the same documents, code, recipes, or whatever content you are working on. The examples are - manual saving, dropbox, google docs, wikipedia, git, svn\par
+\par
+\par
+Changing directories:\par
+1) Windows\par
+To change directories in a command prompt use cd (dos for change directory)\par
+To go up a level use\par
+ cd ..\par
+ To go down into a directory use\par
+ cd dirName\par
+ To see what is in the current directory use:\par
+ dir\par
+\par
+2) Git bash (also Mac and Linux)\par
+\par
+Let's say the default git folder is C:\\Users\\username.git\par
+\par
+But you want to go into c:/project\par
+\par
+cd  /c/project/\par
+Use the pwd command to see in which path you are currently in\par
+cd e: will change the drive\par
+\par
+Copy and past in git bash:\par
+\par
+highlight and R-click\par
+R click at the place you want it pasted.\par
+This puts the string into the clipboard, so you can paste it into a Win program, using Ctrl V\par
+\par
+\par
+To compare files:\par
+\par
+1) Windows\par
+FC - file compare. To compare files using a command prompt, change the directory to where files are, and then run the following command\par
+FC fileold.ext filenew.ext\par
+\par
+2) git bash:\par
+$ diff -u fileold.ext filenew.ext\par
+or \par
+$ git diff fileold.ext filenew.ext\par
+\par
+To manipulate directories/files in git:\par
+\par
+cd ~                          # change directories to your home directory\par
+mkdir version-control         # make version-control directory\par
+cd version-control            # go to version-control directory\par
+mkdir reflections             # create reflections directory\par
+cd reflections                # go to reflections directory\par
+subl lesson_1_reflections.txt # launch sublime with file called lesson_1_reflections.txt (you can replace subl with another editor here if you prefer a different one)\par
+\par
+Set up your course workspace\par
+\par
+Right now, you should create a version-control directory (a more computer-science-y term for \ldblquote folder\rdblquote ) to hold all your files for this course in an easy to remember location, then create a reflections sub-directory, and within that, create a plain text file called lesson_1_reflections.txt for the questions from this lesson.\par
+\par
+You can do this by running the following commands in either Git Bash or the terminal (the bits after the # signs are comments, anything after those are not interpreted):\par
+\par
+cd ~                          # change directories to your home directory\par
+mkdir version-control         # make version-control directory\par
+cd version-control            # go to version-control directory\par
+mkdir reflections             # create reflections directory\par
+cd reflections                # go to reflections directory\par
+subl lesson_1_reflections.txt # launch sublime with file called lesson_1_reflections.txt (you can replace subl with another editor here if you prefer a different one)\par
+If you prefer, rather than creating the file from scratch, you could download the lesson_1_reflections_prompts.txt file from the Downloadables section, place it in the reflections directory and rename it, then add your response after the first prompt.\par
+\par
+Once you\rquote ve saved your file, if you want to double-check that everything has gone as planned, try these commands:\par
+\par
+pwd # print working directory - shows what directory you are in\par
+ls  # list the files in this directory\par
+\par
+\par
+Git (Brit - npleasant person)\par
+\par
+Commit - manual checkpoints\par
+require some description, like - fix off-by-one bug\par
+or add cool new features\par
+\par
+\par
+To view the version (if you have been using git), navigate to the directory where files were saved (see above), and type\par
+git log\par
+this gives a list of all the versions that git saved, each one has an ID, an author and a message (which explains what changed since the last commit)\par
+\par
+to compare differences between the version, use a diff command (see above). Instead of filenames, use the ids.\par
+$ diff ID1 ID2\par
+\par
+\par
+How Often to Commit\par
+It's usually a good idea to keep commits small. As the diff between two versions gets bigger, it gets harder to understand and less useful. However, you don\rquote t want to make your commits too small either. If you always save a commit every time you change a line of code, your history will be harder to read since it will have a huge number of commits over a short time period.\par
+\par
+A good rule of thumb is to make one commit per logical change. For example, if you fixed a typo, then fixed a bug in a separate part of the file, you should use one commit for each change since they are logically separate. If you do this, each commit will have one purpose that can be easily understood. Git allows you to write a short message explaining what was changed in each commit, and that message will be more useful if each commit has a single logical change.\par
+\par
+Examples of commits:\par
+\par
+One Commit per Logical Change Solution\par
+\par
+You commit all the changes required to add a new feature, which you\rquote ve been working on for a week. You haven\rquote t committed since you started working on it.\par
+\par
+~ This commit commit seems too big. It's easier to understand what each commit does if each only does one thing and is fairly small. Going a week without committing is not the best idea.\par
+\par
+You found three typos in your README. You fix and commit the first.\par
+\par
+~ This commit seems too small. It would be better to fix all three typos, then commit. That way, your history won't get too cluttered with typo fixes. Plus, you don\rquote t need to worry about introducing bugs to a README, so bundling changes together is more likely to be a good idea.\par
+\par
+You commit all the changes required to add a new feature, which you\rquote ve been working on for an hour.\par
+\par
+~ This is probably a good size for a commit. All the work is on a single feature, so the commit will have a clear logical purpose. After an hour, the diff will probably have a fair amount of content in it, but not too much to understand.\par
+\par
+On the other hand, sometimes after working for an hour you\rquote ll have run into more than one natural committing point, in which case you would want to break the feature up into smaller commits. Because of this, \ldblquote too big\rdblquote  could also be a reasonable answer here.\par
+\par
+You fix two small bugs in different functions and commit them both at once.\par
+\par
+~ This commit is probably too big. It would have been better to commit after the first bug fix, since the two bug fixes aren't related to each other.\par
+\par
+Judgement Call\par
+\par
+Choosing when to commit is a judgement call, and it's not always cut-and-dried. When choosing whether to commit, just keep in mind that each commit should have one clear, logical purpose, and you should never do too much work without committing.\par
+\par
+Tracking across files:\par
+\par
+Files that are connected and should be edited together are called a repository in Git. A commit will save all the files in your repository at the time of your commit.\par
+\par
+to get the full repository, use clone command\par
+you can clone from the internet, using the url after clone and space \par
+to list the content of the repo, use command git log (do not forget to cd to the right place!)\par
+to quit git log - use q\par
+To get colored diff output, run git config --global color.ui auto\par
+to copy and paste - select and R click, then R click where you need it.\par
+\par
+\par
+Git Errors and Warnings Solution\par
+\par
+Should not be doing an octopus \par
+Octopus is a strategy Git uses to combine many different versions of code together. This message can appear if you try to use this strategy in an inappropriate situation.\par
+\par
+You are in 'detached HEAD' state \par
+HEAD is what Git calls the commit you are currently on. You can \ldblquote detach\rdblquote  the HEAD by switching to a previous commit, which we\rquote ll see in the next video. Despite what it sounds like, it\rquote s actually not a bad thing to detach the HEAD. Git just warns you so that you\rquote ll realize you\rquote re doing it.\par
+\par
+Git checkout:\par
+\par
+If you want to check a previous version, you need to reset as the latest commit. Make a note of the latest commit (to reset it back when done), then use the command $ git checkout ID\par
+\par
+It might give you a detached head warning, but as long as you do not make changes in this commit, you can ignore it.\par
+Run the file from the Explorer to check it. \par
+\par
+\par
+Git bash configuration:\par
+\par
+Download 2 files (git-completion.bash and git-prompt.sh, there are in the version-control\\configuration directory). Move them to the "home directory", which is the one that appears on the screen when git bash starts. Move these files to the home directory\par
+$ mv /e/version-control/configuration/git-completion.bash git-completion.bash\par
+(if you do not indicate where the file goes, it will go to the home directory)\par
+\par
+$ mv /e/version-control/configuration/git-prompt.sh git-prompt.sh\par
+and\par
+$ mv /e/version-control/configuration/bash_profile_course .bash_profile\par
+\par
+(for more info - {{\field{\*\fldinst{HYPERLINK http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html }}{\fldrslt{http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html\ul0\cf0}}}}\f0\fs22 )\par
+\par
+git config --global core.editor "atom --wait"\par
+git config --global push.default upstream\par
+git config --global merge.conflictstyle diff3\par
+\par
+\par
+Prompts:\par
+\par
+How did viewing a diff between two versions of a file help you see the bug that\par
+was introduced?\par
+\par
+    ~ It was not obvious yet - because I am not entirely familiar with all the words that programming uses, so spacr might have been one of those weird command words. But I guess as i become more familiar with terminology, typos like that will jump at me easier, and diff will certainly help. Using programs to compare files instead of comparing them by hand is going to be useful when I have large files to compare. It is like using Windows Commander that I like so much. :)\par
+\par
+How could having easy access to the entire history of a file make you a more efficient programmer in the long term?\par
+\par
+    ~ First, it shows the progress that is made and allows to evaluate it with a fresh eye. Second, it makes it easier to backtrack and chose a different path, if needed. Third, it help to catch careless errors.\par
+\par
+What do you think are the pros and cons of manually choosing when to create a commit, like you do in Git, vs having versions automatically saved, like Google docs does?\par
+\par
+    ~ You chose the point of saving a version in Git as opposed to automatic savings by a computer. It probably allows greater flexibility, but might be detrimental, if one forgets to commit.\par
+\par
+Why do you think some version control systems, like Git, allow saving multiple files in one commit, while others, like Google Docs, treat each file separately?\par
+ ~ If I would guess it makes sense to have a system that saves multiple files, when dealing with programs and web pages. I thinks Google docs was created mainly for the office documents and is more concerned with space. - According to the class - the downside of the version control is the learning curve, but it is totally worth time and effort investment.\par
+\par
+How can you use the commands git log and git diff to view the history of files?\par
+\par
+   ~ git log shows the list of the commits, incl. date, time and IDs of the commits. git diff allows to compare two commits and to see the changes. Green lines - insertions, red lines - deletions.\par
+\par
+How might using version control make you more confident to make changes that could break something?\par
+\par
+    ~ Very confident. It seems like a great way to deal with the bugs, so there is no fear to try different things.\par
+\par
+Now that you have your workspace set up, what do you want to try using Git for?\par
+\par
+    ~I will try to use it for my web pages content.\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
